@@ -1,5 +1,86 @@
+#login-container {
+	width: 450px;
+	margin: 50px auto;
+	position: relative;
+	height: 55vh;
+	border-radius: 10px;
+}
 
+.form {
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+	text-align: right;
+	padding: 30px 40px;
+	height: 100%;
+	border-radius: 15px;
+	align-items: right;
+	justify-content: center;
+	padding-right: 0;
+	color: #555;
+}
 
-.hah {
-	color: red;
+#login-form {
+	background-color: #9BF6FF;
+}
+
+#signup-form {
+	position: absolute;
+	top: 0;
+	left: 0;
+	background-color: #FDFFB6;
+	width: 10%;
+	overflow: hidden;
+	transition-property: width;
+	transition-duration: 1.5s;
+}
+
+.form label {
+	display: block;
+	margin-top: 9px;
+	width: 80%;
+	text-align: right;
+}
+
+.form input {
+	border-radius: 8px;
+	border: none;
+	outline: none;
+	display: block;
+	padding: 8px 10px;
+	margin: 10px 14px;
+	width: 80%;
+}
+
+.form input[type="submit"] {
+	margin-top: 20px;
+	cursor: pointer;
+}
+
+#cover {
+	background-color: #FDFFB6;
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	border-radius: 15px;
+	display: block;
+	opacity: 1;
+	transition-property: opacity;
+	transition-duration: 1s;
+	transition-delay: 0.5s;
+}
+
+#change-btn {
+	display: block;
+	background-color: #FFADAD;
+	width: 100%;
+	padding: 13px 5px;
+	text-align: center;
+	border: none;
+	border-radius: 15px;
+	color: #FFFFFC;
+	font-size: 24px;
+	cursor: pointer;
 }

@@ -1,4 +1,5 @@
 {% extends "Notepad/base.html" %}
+
 {% load static %}
 
 {% block link %}
@@ -8,3 +9,51 @@
 {% block title %}
 Login | RabbitNote
 {% endblock title %}
+
+{% block content %}
+<div id="login-container">
+    <form action="#" id="login-form" class="form">
+        <label for="login-name"> نام کاربری <i class="fas fa-user"></i> </label>
+        <input type="text" id="login-name" placeholder="User Name">
+        <label for="login-password">رمز عبور <i class="fas fa-key"></i> </label>
+        <input type="password" id="login-password" placeholder="Password">
+        <input type="submit" value="ورود">
+    </form>
+
+    <form action="" id="signup-form" class="form">
+        <label for="signup-name">نام کاربری <i class="fas fa-user"></i></label>
+        <input type="text" id="signup-name" placeholder="User Name">
+        <label for="signup-password">رمز عبور <i class="fas fa-key"></i></label>
+        <input type="password" id="signup-password" placeholder="Password">
+        <label for="again-password">مجددا رمز عبور را وارد کنید <i class="fas fa-user"></i></label>
+        <input type="password" id="again-password" placeholder="Password">
+        <input type="submit" value="ثبت نام">
+        <div id="cover"></div>
+    </form>
+    <button id="change-btn" onclick="coverit()">ایجاد حساب جدید</button>
+</div>
+
+<script>
+    var flag = 0
+    function coverit() {
+        if (flag == 0) {
+            document.getElementById("signup-form").style.width = "90%";
+            function create_timeout() {
+                document.getElementById("cover").style.display = "none";
+            }
+            document.getElementById("cover").style.opacity = "0";
+            setTimeout(create_timeout, 1000);
+            document.getElementById("change-btn").innerHTML = "از قبل حساب دارم";
+            flag = 1
+        }
+        else {
+            document.getElementById("signup-form").style.width = "10%";
+            document.getElementById("cover").style.display = "block";
+            document.getElementById("cover").style.opacity = "1";
+            document.getElementById("change-btn").innerHTML = "ایجاد حساب جدید";
+            flag = 0
+        }
+        
+    }
+</script>
+{% endblock content %}
