@@ -3,7 +3,9 @@
 	margin: 50px auto;
 	position: relative;
 	height: 55vh;
-	border-radius: 10px;
+	/* border-radius: 15px; */
+	max-width: 90%;
+	min-height: 370px;
 }
 
 .form {
@@ -17,18 +19,18 @@
 	align-items: right;
 	justify-content: center;
 	padding-right: 0;
-	color: #555;
+	color: #73877B;
 }
 
 #login-form {
-	background-color: #9BF6FF;
+	background-color: #3DCCC7;
 }
 
 #signup-form {
 	position: absolute;
 	top: 0;
 	left: 0;
-	background-color: #FDFFB6;
+	background-color: #cbf3f0;
 	width: 10%;
 	overflow: hidden;
 	transition-property: width;
@@ -43,22 +45,36 @@
 }
 
 .form input {
-	border-radius: 8px;
 	border: none;
 	outline: none;
 	display: block;
 	padding: 8px 10px;
 	margin: 10px 14px;
 	width: 80%;
+	border-radius: 8px;
 }
 
-.form input[type="submit"] {
+.form button {
+	display: block;
+	width: 80%;
+	padding: 8px 10px;
+	margin: 10px 14px;
+	border-radius: 8px;
+	border: none;
 	margin-top: 20px;
 	cursor: pointer;
+	transition: all 0.75s;
+	color: #4c5c68;
+	font-size: 20px;
+}
+
+.form button:hover {
+	background-color: #4c5c68;
+	color: #fff;
 }
 
 #cover {
-	background-color: #FDFFB6;
+	background-color: #cbf3f0;
 	position: absolute;
 	top: 0;
 	left: 0;
@@ -74,7 +90,7 @@
 
 #change-btn {
 	display: block;
-	background-color: #FFADAD;
+	background-color: #4c5c68;
 	width: 100%;
 	padding: 13px 5px;
 	text-align: center;
@@ -83,4 +99,12 @@
 	color: #FFFFFC;
 	font-size: 24px;
 	cursor: pointer;
+	transition: all 0.75s;
+	border: 3px solid #4c5c68;
+}
+
+#change-btn:hover {
+	background-color: #fff;
+	color: #4c5c68;
+	border: 3px solid #4c5c68;
 }
