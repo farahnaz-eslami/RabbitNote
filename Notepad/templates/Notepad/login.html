@@ -1,8 +1,59 @@
-<head>
-{% load static %}
-<link rel="stylesheet" href="{% static 'Notepad/login_style.css' %}">
-</head>
+{% extends "Notepad/base.html" %}
 
-<div class='hah'>
-Hello World :) 
+{% load static %}
+
+{% block link %}
+<link rel="stylesheet" href="{% static 'Notepad/login_style.css' %}">
+{% endblock link %}
+
+{% block title %}
+Login | RabbitNote
+{% endblock title %}
+
+{% block content %}
+<div id="login-container">
+    <form action="#" id="login-form" class="form">
+        <label for="login-name"> نام کاربری <i class="fas fa-user"></i> </label>
+        <input type="text" id="login-name" class="field">
+        <label for="login-password">رمز عبور <i class="fas fa-key"></i> </label>
+        <input type="password" id="login-password" class="field">
+        <button type="submit">ورود <i class="fas fa-door-open"></i></button>
+    </form>
+
+    <form action="" id="signup-form" class="form">
+        <label for="signup-name">نام کاربری <i class="fas fa-user"></i></label>
+        <input type="text" id="signup-name" class="field">
+        <label for="signup-password">رمز عبور <i class="fas fa-key"></i></label>
+        <input type="password" id="signup-password" class="field">
+        <label for="again-password">مجددا رمز عبور را وارد کنید <i class="fas fa-user"></i></label>
+        <input type="password" id="again-password" class="field">
+        <button type="submit">ثبت نام <i class="fas fa-user-plus"></i></button>
+        <div id="cover"></div>
+    </form>
+    <button id="change-btn" onclick="coverit()">ایجاد حساب جدید</button>
 </div>
+
+<script>
+    var flag = 0
+    function coverit() {
+        if (flag == 0) {
+            document.getElementById("signup-form").style.width = "90%";
+            function create_timeout() {
+                document.getElementById("cover").style.display = "none";
+            }
+            document.getElementById("cover").style.opacity = "0";
+            setTimeout(create_timeout, 1000);
+            document.getElementById("change-btn").innerHTML = "از قبل حساب دارم";
+            flag = 1
+        }
+        else {
+            document.getElementById("signup-form").style.width = "10%";
+            document.getElementById("cover").style.display = "block";
+            document.getElementById("cover").style.opacity = "1";
+            document.getElementById("change-btn").innerHTML = "ایجاد حساب جدید";
+            flag = 0
+        }
+        
+    }
+</script>
+{% endblock content %}
