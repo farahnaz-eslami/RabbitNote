@@ -1,3 +1,9 @@
+:root {
+    --primary-color: #3DCCC7;
+    --dark-gray: #4c5c68;
+}
+
+/* Reset */
 * {
     margin: 0;
     padding: 0;
@@ -6,6 +12,25 @@
 
 a {
     text-decoration: none;
+}
+
+/* utilities */
+.btn-dark {
+    background-color: var(--dark-gray);
+    border: 3px solid var(--dark-gray);
+    width: 100%;
+    padding: 13px 5px;
+    border-radius: 15px;
+    color: #fff;
+    font-size: 24px;
+    cursor: pointer;
+    transition: all 0.75s;
+}
+
+.btn-dark:hover {
+    background-color: #fff;
+	color: var(--dark-gray);
+	border: 3px solid #var(--dark-gray);
 }
 
 /* Header */
