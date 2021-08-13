@@ -1,11 +1,30 @@
+/* Loged In */
+#loged-in-container {
+	width: 400px;
+	margin: 50px auto;
+	text-align: center;
+	max-width: 80%;
+	font-size: 1.3rem;
+}
+
+#loged-in-container p {
+	margin-bottom: 30px;
+}
+
+#loged-in-container p span {
+	color: var(--primary-color);
+	font-weight: bold;
+}
+
+/* Login and Signup */
 #login-container {
 	width: 450px;
 	margin: 50px auto;
 	position: relative;
 	height: 55vh;
-	/* border-radius: 15px; */
 	max-width: 90%;
 	min-height: 370px;
+	display: none;
 }
 
 .form {
@@ -23,7 +42,7 @@
 }
 
 #login-form {
-	background-color: #3DCCC7;
+	background-color: var(--primary-color);
 }
 
 #signup-form {
@@ -89,22 +108,5 @@
 }
 
 #change-btn {
-	display: block;
-	background-color: #4c5c68;
-	width: 100%;
-	padding: 13px 5px;
-	text-align: center;
-	border: none;
-	border-radius: 15px;
-	color: #FFFFFC;
-	font-size: 24px;
-	cursor: pointer;
-	transition: all 0.75s;
-	border: 3px solid #4c5c68;
-}
-
-#change-btn:hover {
-	background-color: #fff;
-	color: #4c5c68;
-	border: 3px solid #4c5c68;
+	margin-top: 15px;
 }

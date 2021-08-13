@@ -1,3 +1,9 @@
+:root {
+    --primary-color: #3DCCC7;
+    --dark-gray: #4c5c68;
+}
+
+/* Reset */
 * {
     margin: 0;
     padding: 0;
@@ -8,10 +14,39 @@ a {
     text-decoration: none;
 }
 
+/* utilities */
+.btn-dark {
+    background-color: var(--dark-gray);
+    border: 3px solid var(--dark-gray);
+    width: 100%;
+    padding: 13px 5px;
+    border-radius: 10px;
+    color: #fff;
+    font-size: 24px;
+    cursor: pointer;
+    transition: all 0.75s;
+}
+
+.btn-dark:hover {
+    background-color: #fff;
+	color: var(--dark-gray);
+	border: 3px solid #var(--dark-gray);
+}
+
 /* Header */
 header {
-    background-color: #07BEB8;
-    height: 150px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-size: 1.3rem;
+    font-family: "Lato", sans-serif;
+    text-align: center;
+    background-color: var(--primary-color);
+}
+
+header h2 {
+    margin: 20px 0;
 }
 
 
@@ -23,13 +58,16 @@ footer {
 
 footer .socials {
     display: flex;
-    margin-left: 30px;
 }
 
 footer .socials a {
     color: #fff;
     margin: 30px 0 0 30px;
     transition: all 0.75s;
+}
+
+footer .socials a:first-child {
+    margin-left: 0;
 }
 
 footer .socials a:hover {
