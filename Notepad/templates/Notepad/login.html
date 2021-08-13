@@ -42,7 +42,7 @@ Login | RabbitNote
 
 {% block script %}
 <script>
-    {% if True %}
+    {% if not logged_in %}
     document.getElementById("loged-in-container").style.display = "none";
     document.getElementById("login-container").style.display = "block";
     {% endif %}
