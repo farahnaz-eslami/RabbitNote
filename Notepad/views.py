@@ -1,9 +1,10 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect, reverse
 from django.contrib.auth import authenticate, login, logout
 from django.http import JsonResponse, Http404
 from django.contrib.auth.models import User
 from django.core.exceptions import ValidationError
 from django.core.validators import validate_email
+from django.core.serializers import serialize
 from .models import Notepad, Page
 from json import loads
 # Create your views here.
@@ -11,13 +12,44 @@ from json import loads
 
 
 def home_view(request):
-    pass
+    if not request.user.is_authenticated:
+        return redirect(reverse('login'))
+    elif request.is_ajax and request.method == "POST":
+        data = loads(request.body)
+        if 'action' not in data:
+            raise Http404('Bad request!')
+        action = data['action']
+        
+        if action == "get-notebooks":
+            q = Notepad.objects.all()
+            json_data = serialize("json", q)
+            return JsonResponse({'notebooks': json_data})
+            
+        elif action == 'add-notebook':
+            pass
+        elif action == 'del-notebook':
+            pass
+        elif action == 'ren-notebook':
+            pass
+        elif action == 'get-pages':
+            pass
+        elif action == 'add-page':
+            pass
+        elif action == 'del-page':
+            pass
+        elif action == 'get-page':
+            pass
+        elif action == 'set-page':
+            pass
+    else:
+        return render(request, "Notepad/home.html",
+                      {'username': request.user.username})
+        
     
 
 def login_view(request):
     if request.is_ajax and request.method == "POST":
         data = loads(request.body)
-        print(data)
         if "action" in data and data["action"] == "login":
             if 'username' in data and 'password' in data:
                 user = authenticate(request, 
@@ -47,6 +79,7 @@ def login_view(request):
                                                 data['email'],
                                                 data['password'])
                 user.save()
+                login(request, user)
                 return JsonResponse({'res':'True'})
         elif 'action' in data and data['action'] == 'username_exists':
             if 'username' in data and User.objects.filter(username=data['username']).exists():

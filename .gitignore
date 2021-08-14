@@ -1,6 +1,8 @@
 # Byte-compiled / optimized / DLL files
 __pycache__/
 RabbitNote/__pycache__/
+Notepad/migrations/
+.idea/
 *.py[cod]
 *$py.class
 

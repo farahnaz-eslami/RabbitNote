@@ -12,6 +12,11 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 
 from pathlib import Path
 
+# Fixing Wrong Mime Type For JS Files! 
+# Looks like this happen only in development using runserver.
+import mimetypes
+mimetypes.add_type("text/javascript", ".js", True)
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
