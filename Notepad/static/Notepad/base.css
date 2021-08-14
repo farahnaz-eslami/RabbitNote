@@ -58,6 +58,7 @@ footer {
 
 footer .socials {
     display: flex;
+    margin-left: 40px;
 }
 
 footer .socials a {
@@ -85,5 +86,6 @@ footer p {
     footer .socials {
         align-items: center;
         justify-content: center;
+        margin-left: 0;
     }
 }
