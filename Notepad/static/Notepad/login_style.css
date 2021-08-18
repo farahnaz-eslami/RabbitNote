@@ -16,6 +16,11 @@
 	font-weight: bold;
 }
 
+#loged-in-container .btn-light {
+	width: 100%;
+	margin-bottom: 30px;
+}
+
 /* Login and Signup */
 #login-container {
 	width: 450px;
@@ -25,6 +30,8 @@
 	max-width: 90%;
 	min-height: 370px;
 	display: none;
+	transition-property: height;
+	transition-duration: 1s;
 }
 
 .form {

@@ -1,5 +1,6 @@
 :root {
     --primary-color: #3DCCC7;
+    --secondary-color: #cbf3f0;
     --dark-gray: #4c5c68;
 }
 
@@ -30,7 +31,22 @@ a {
 .btn-dark:hover {
     background-color: #fff;
 	color: var(--dark-gray);
-	border: 3px solid #var(--dark-gray);
+	border: 3px solid var(--dark-gray);
+}
+
+.btn-light {
+    color: var(--dark-gray);
+    border: none;
+    padding: 13px 10px;
+    font-size: 1.5rem;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.75s;
+}
+
+.btn-light:hover {
+    background-color: var(--dark-gray);
+    color: #fff;
 }
 
 /* Header */
@@ -42,7 +58,7 @@ header {
     font-size: 1.3rem;
     font-family: "Lato", sans-serif;
     text-align: center;
-    background-color: var(--primary-color);
+    background: var(--primary-color);
 }
 
 header h2 {

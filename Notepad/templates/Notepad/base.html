@@ -13,6 +13,7 @@
     <title>{% block title %} {% endblock title %}</title>
 </head>
 <body>
+
     {% block header %}
     <header>
         <h2>Rabbit Note</h2>
@@ -25,9 +26,8 @@
     {% block footer %}
     <footer>
         <div class="socials">
-            <a href="#"><i class="fas fa-envelope fa-3x"></i></a>
-            <a href="t.me/smal1378"><i class="fab fa-telegram fa-3x"></i></a>
-            <a href="https://github.com/smal1378/RabbitNote"><i class="fab fa-github fa-3x"></i></a>
+            <a href="t.me/smal1378" target="_blank"><i class="fab fa-telegram fa-3x"></i></a>
+            <a href="https://github.com/smal1378/RabbitNote" target="_blank"><i class="fab fa-github fa-3x"></i></a>
         </div>
         <p>&copy; 2021 AHC Team</p>
     </footer>
@@ -36,6 +36,7 @@
     <script>
         var csrf = "{{csrf_token}}"
     </script>
+    
     {% block script %}
     {% endblock script %}
 </body>
