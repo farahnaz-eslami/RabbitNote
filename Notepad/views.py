@@ -4,43 +4,96 @@ from django.http import JsonResponse, Http404
 from django.contrib.auth.models import User
 from django.core.exceptions import ValidationError
 from django.core.validators import validate_email
-from django.core.serializers import serialize
 from .models import Notepad, Page
 from json import loads
 # Create your views here.
 
 
-
 def home_view(request):
     if not request.user.is_authenticated:
         return redirect(reverse('login'))
-    elif request.is_ajax and request.method == "POST":
+    elif request.is_ajax and request.method == "POST" and request.user.is_authenticated:
         data = loads(request.body)
         if 'action' not in data:
             raise Http404('Bad request!')
         action = data['action']
         
         if action == "get-notebooks":
-            q = Notepad.objects.all()
-            json_data = serialize("json", q)
-            return JsonResponse({'notebooks': json_data})
+            q = Notepad.objects.filter(owner=request.user)
+            result = {}
+            for notepad in q:
+                result[notepad.pk] = notepad.name
+            return JsonResponse(result)
             
         elif action == 'add-notebook':
-            pass
+            if 'name' in data:
+                q = Notepad(owner=request.user, name=data['name'])
+                q.save()
+                return JsonResponse({'res': 'True'})
+            
         elif action == 'del-notebook':
-            pass
+            if 'pk' in data:
+                q = Notepad.objects.get(pk=data['pk'])
+                if q and q.owner == request.user:
+                    q.delete()
+                    return JsonResponse({'res': 'True'})
+                    
         elif action == 'ren-notebook':
-            pass
+            if 'pk' in data and 'name' in data:
+                q = Notepad.objects.get(pk=data['pk'])
+                if q and q.owner == request.user:
+                    q.name = data['name']
+                    q.save()
+                    return JsonResponse({'res': 'True'})
+        
         elif action == 'get-pages':
-            pass
+            if 'pk' in data and 'sort' in data:
+                q = Notepad.objects.get(pk=data['pk'])
+                if q and q.owner == request.user:
+                    result = {}
+                    if data['sort'] == 'Created':
+                        sorting = '-date_created'
+                    else:
+                        sorting = '-date_modified'
+                    for page in q.page_set.order_by(sorting):
+                        result[page.pk] = {'title': page.title, 
+                                           'created': page.date_created,
+                                           'modified': page.date_modified}
+                    return JsonResponse(result)
+
         elif action == 'add-page':
-            pass
+            if 'pk' in data and 'name' in data:
+                q = Notepad.objects.get(pk=data['pk'])
+                if q and q.owner == request.user:
+                    p = Page(master=q, title=data['name'], body="")
+                    p.save()
+                    return JsonResponse({"res": "True"})
+            
         elif action == 'del-page':
-            pass
+            if 'pk' in data and 'pkp' in data:
+                q = Notepad.objects.get(pk=data['pk'])
+                p = q.page_set.get(pk=data['pkp'])
+                if p and q and q.owner == request.user:
+                    p.delete()
+                    return JsonResponse({'res': 'True'})
+                    
         elif action == 'get-page':
-            pass
+            if 'pk' in data and 'pkp' in data:
+                q = Notepad.objects.get(pk=data['pk'])
+                p = q.page_set.get(pk=data['pkp'])
+                if p and q and q.owner == request.user:
+                    return JsonResponse({'res': 'True', 'body': p.body})
+                    
         elif action == 'set-page':
-            pass
+            if 'pk' in data and 'pkp' in data and 'body' in data:
+                q = Notepad.objects.get(pk=data['pk'])
+                p = q.page_set.get(pk=data['pkp'])
+                if p and q and q.owner == request.user:
+                    p.body = data['body']
+                    p.save()
+                    return JsonResponse({'res': 'True'})
+        
+        raise Http404('Bad request!')
     else:
         return render(request, "Notepad/home.html",
                       {'username': request.user.username})
