@@ -13,7 +13,7 @@ Login | RabbitNote
 {% block content %}
 <div id="loged-in-container" dir="rtl">
     <p>شما با نام کاربری <span>{{username}}</span> وارد شده اید.</p>
-    <button class="btn-light">صفحه اصلی</button>
+    <a class="btn-light" href="{% url 'home' %}">صفحه اصلی</a>
     <button id="log-out-btn" class="btn-dark" onclick="logout();">خروج از حساب</button>
 </div>
 
@@ -33,13 +33,24 @@ Login | RabbitNote
         <input type="email" id="signup-email" class="field">
         <label for="signup-password">رمز عبور <i class="fas fa-key"></i></label>
         <input type="password" id="signup-password" class="field">
-        <label for="again-password">مجددا رمز عبور را وارد کنید <i class="fas fa-user"></i></label>
+        <label for="again-password">مجددا رمز عبور را وارد کنید <i class="fas fa-key"></i></label>
         <input type="password" id="again-password" class="field">
         <button class="btn-light" type="button" onclick="sign_up();">ثبت نام <i class="fas fa-user-plus"></i></button>
         <div id="cover"></div>
     </form>
 
     <button class="btn-dark" id="change-btn" onclick="coverit()">ایجاد حساب جدید</button>
+</div>
+
+<div id="waiting">
+    <p>لطفا منتظر بمانید</p>
+    <div class="circles">
+        <div class="circle"></div>
+        <div class="circle"></div>
+        <div class="circle"></div>
+        <div class="circle"></div>
+        <div class="circle"></div>
+    </div>
 </div>
 {% endblock content %}
 

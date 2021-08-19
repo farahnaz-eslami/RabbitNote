@@ -1,7 +1,7 @@
 var flag = 0
 function coverit() {
     if (flag == 0) {
-		document.getElementById("login-container").style.height = "65vh";
+		document.getElementById("login-container").style.height = "70vh";
         document.getElementById("signup-form").style.width = "90%";
         function create_timeout() {
             document.getElementById("cover").style.display = "none";

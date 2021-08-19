@@ -42,6 +42,7 @@ a {
     border-radius: 8px;
     cursor: pointer;
     transition: all 0.75s;
+    background-color: #ddd;
 }
 
 .btn-light:hover {
