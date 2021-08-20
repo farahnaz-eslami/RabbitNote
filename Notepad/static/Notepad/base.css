@@ -2,6 +2,7 @@
     --primary-color: #3DCCC7;
     --secondary-color: #cbf3f0;
     --dark-gray: #4c5c68;
+    --green-color: #70e000;
 }
 
 /* Reset */
@@ -69,13 +70,14 @@ header h2 {
 
 /* Footer */
 footer {
-    background-color: #07BEB8;
+    background-color: var(--primary-color);
     margin-top: 100px;
 }
 
 footer .socials {
     display: flex;
     margin-left: 40px;
+    align-items: center;
 }
 
 footer .socials a {

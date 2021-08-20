@@ -1,20 +1,51 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home | Rabbit Note</title>
-</head>
-<body>
-    <div id="home-container">
-        
+{% extends 'Notepad/base.html' %}
+
+{% load static %}
+
+{% block link %}
+<link rel="stylesheet" href="{% static 'Notepad/home.css' %}">
+{% endblock link %}
+
+{% block title %}
+Home | RabbitNote
+{% endblock title%}
+
+{% block header %}
+{% endblock header %}
+
+{% block content %}
+<div id="home-container">
+    <header>
+        Rabbit Note
+    </header>
+
+    <div class="home-content">
+        <div class="notes-list">
+            <div>نوت ها</div>
+            <div class="plus"><button><i class="fas fa-plus fa-2x"></i></button></i></div>
+            <ul>
+                <li><button>note 3</button></li>
+                <li><button>note 2</button></li>
+                <li><button>note 1</button></li>
+            </ul>
+        </div>
     </div>
-</body>
-</html>
 
+    <footer>
+        <div class="socials">
+            <a href="https://t.me/Smal1378" target="_blank"><i class="fab fa-telegram fa-3x"></i></a>
+            <a href="https://github.com/smal1378/RabbitNote" target="_blank"><i class="fab fa-github fa-3x"></i></a>
+            <p>&copy; 2021 AHC Team</p>
+        </div>
+    </footer>
+</div>
+{% endblock content %}
 
+{% block footer %}
+{% endblock footer %}
 
+{% block script %}
 <script>
-csrf = "{{csrf_token}}"
+    csrf = "{{csrf_token}}"
 </script>
+{% endblock script %}
