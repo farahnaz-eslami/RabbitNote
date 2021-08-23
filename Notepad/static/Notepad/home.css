@@ -1,0 +1,94 @@
+#home-container {
+    height: 100vh;
+}
+
+#home-container header {
+    height: 10vh;
+}
+
+#home-container header h2 {
+    font-size: 1.5rem;
+    padding: 5px 0;
+}
+
+#home-container .home-content {
+    height: 80vh;
+    display: flex;
+}
+
+#home-container .home-content .notes-list {
+    width: 15%;
+    height: 100%;
+    background-color: var(--dark-gray);
+    overflow: auto;
+    color: #fff;
+    text-align: center;
+}
+
+#home-container .home-content .notes-list div {
+    border-bottom: 1px solid #ccc;
+    padding: 10px 0;
+    font-size: 1.2rem;
+}
+
+#home-container .plus {
+    padding: 0 !important;
+}
+
+#home-container .plus button {
+    background-color: var(--dark-gray);
+    color: #fff;
+    width: 100%;
+    height: 100%;
+    border: none;
+    cursor: pointer;
+    padding: 10px;
+}
+
+#home-container .plus i {
+    transition: all 0.75s;
+}
+
+#home-container .plus button:hover i {
+    transform: rotate(90deg);
+    color: var(--green-color);
+}
+
+#home-container .notes-list li {
+    border-bottom: 1px solid #ccc;
+}
+
+#home-container .notes-list li button {
+    width: 100%;
+    height: 100%;
+    padding: 10px;
+    background-color: var(--dark-gray);
+    border: none;
+    color: #fff;
+    transition: all 1s;
+    font-size: 1.2rem;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+#home-container .notes-list li button:hover {
+    background-color: var(--secondary-color);
+    color: var(--dark-gray);
+    transform: scaleY(1.3);
+}
+
+#home-container footer {
+    height: 10vh;
+    margin-top: 0;
+    position: sticky;
+    top: 90%;
+}
+
+#home-container footer .socials a {
+    margin-top: 0;
+}
+
+#home-contaienr footer p {
+    padding: 0;
+    align-self: center;
+}

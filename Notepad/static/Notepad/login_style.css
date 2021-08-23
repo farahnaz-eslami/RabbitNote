@@ -16,6 +16,12 @@
 	font-weight: bold;
 }
 
+#loged-in-container .btn-light {
+	width: 100%;
+	margin-bottom: 30px;
+	display: block;
+}
+
 /* Login and Signup */
 #login-container {
 	width: 450px;
@@ -25,6 +31,8 @@
 	max-width: 90%;
 	min-height: 370px;
 	display: none;
+	transition-property: height;
+	transition-duration: 1s;
 }
 
 .form {
@@ -73,23 +81,11 @@
 	border-radius: 8px;
 }
 
-.form button {
-	display: block;
+.form .btn-light {
 	width: 80%;
-	padding: 8px 10px;
 	margin: 10px 14px;
-	border-radius: 8px;
-	border: none;
 	margin-top: 20px;
-	cursor: pointer;
-	transition: all 0.75s;
-	color: #4c5c68;
 	font-size: 20px;
-}
-
-.form button:hover {
-	background-color: #4c5c68;
-	color: #fff;
 }
 
 #cover {
@@ -109,4 +105,52 @@
 
 #change-btn {
 	margin-top: 15px;
+}
+
+#waiting {
+	position: fixed;
+	width: 100vw;
+	height: 100vh;
+	background-color: #333;
+	top: 0;
+	left: 0;
+	opacity: 0.85;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+	visibility: hidden;
+}
+
+#waiting p {
+	color: #fff;
+	margin-bottom: 30px;
+	font-size: 1.5rem;
+	font-weight: bold;
+}
+
+#waiting .circles {
+	display: flex;
+}
+
+#waiting .circle {
+	width: 40px;
+	height: 40px;
+	background-color: #fff;
+	border-radius: 50%;
+	animation-name: jumping-circles;
+	animation-iteration-count: infinite;
+	animation-duration: 1s;
+	animation-timing-function: ease-in-out;
+	animation-direction: alternate;
+}
+
+#waiting .circle:nth-child(odd) {
+	animation-delay: 0.5s;
+}
+
+@keyframes jumping-circles {
+	to {
+		transform: translateY(100px);
+	}
 }

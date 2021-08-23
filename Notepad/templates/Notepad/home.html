@@ -1,4 +1,51 @@
-This is home page, you are logged in as {{username}}.
+{% extends 'Notepad/base.html' %}
+
+{% load static %}
+
+{% block link %}
+<link rel="stylesheet" href="{% static 'Notepad/home.css' %}">
+{% endblock link %}
+
+{% block title %}
+Home | RabbitNote
+{% endblock title%}
+
+{% block header %}
+{% endblock header %}
+
+{% block content %}
+<div id="home-container">
+    <header>
+        Rabbit Note
+    </header>
+
+    <div class="home-content">
+        <div class="notes-list">
+            <div>نوت ها</div>
+            <div class="plus"><button><i class="fas fa-plus fa-2x"></i></button></i></div>
+            <ul>
+                <li><button>note 3</button></li>
+                <li><button>note 2</button></li>
+                <li><button>note 1</button></li>
+            </ul>
+        </div>
+    </div>
+
+    <footer>
+        <div class="socials">
+            <a href="https://t.me/Smal1378" target="_blank"><i class="fab fa-telegram fa-3x"></i></a>
+            <a href="https://github.com/smal1378/RabbitNote" target="_blank"><i class="fab fa-github fa-3x"></i></a>
+            <p>&copy; 2021 AHC Team</p>
+        </div>
+    </footer>
+</div>
+{% endblock content %}
+
+{% block footer %}
+{% endblock footer %}
+
+{% block script %}
 <script>
-csrf = "{{csrf_token}}"
+    csrf = "{{csrf_token}}"
 </script>
+{% endblock script %}
