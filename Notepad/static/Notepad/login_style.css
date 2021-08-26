@@ -76,9 +76,15 @@
 	outline: none;
 	display: block;
 	padding: 8px 10px;
-	margin: 10px 14px;
+	margin: 10px 14px 5px 14px;
 	width: 80%;
 	border-radius: 8px;
+}
+
+.form .input-area p {
+	width: 80%;
+	font-size: 0.8rem;
+	color: var(--red-color);
 }
 
 .form .btn-light {

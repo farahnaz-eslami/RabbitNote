@@ -1,7 +1,7 @@
 var flag = 0
 function coverit() {
     if (flag == 0) {
-		document.getElementById("login-container").style.height = "70vh";
+		document.getElementById("login-container").style.height = "80vh";
         document.getElementById("signup-form").style.width = "90%";
         function create_timeout() {
             document.getElementById("cover").style.display = "none";
@@ -58,6 +58,32 @@ function login() {
 }
 
 function login() {
+	let loginName = document.getElementById("login-name").value;
+	let loginPassword = document.getElementById("login-password").value;
+	let loginNameWarn = document.getElementById("login-name-warn");
+	let loginPasswordWarn = document.getElementById("login-password-warn");
+
+	loginNameWarn.innerHTML = `&nbsp;`;
+	loginPasswordWarn.innerHTML = `&nbsp`;
+
+	if (loginName == "" && loginPassword == "") {
+		loginNameWarn.innerHTML = "نام کاربری باید وارد شود";
+		loginPasswordWarn.innerHTML = "رمز عبور باید وارد شود";
+		return
+	}
+	else if (loginName == "") {
+		loginNameWarn.innerHTML = "نام کاربری باید وارد شود";
+		return
+	}
+	else if (loginPassword == "") {
+		loginPasswordWarn.innerHTML = "رمز عبور باید وارد شود";
+		return
+	}
+	else if (loginPassword.length < 6) {
+		loginPasswordWarn.innerHTML = "رمز عبور باید حداقل متشکل از 6 کاراکتر باشد";
+		return
+	}
+
 	let data = {
 		action: 'login',
 		username: document.getElementById('login-name').value,
@@ -116,6 +142,41 @@ function logout() {
 }
 
 function sign_up() {
+	let signupName = document.getElementById("signup-name").value;
+	let signupEmail = document.getElementById("signup-email").value;
+	let signupPassword = document.getElementById("signup-password").value;
+	let againPassword = document.getElementById("again-password").value;
+	let signupNameWarn = document.getElementById("signup-name-warn");
+	let signupEmailWarn = document.getElementById("signup-email-warn");
+	let signupPasswordWarn = document.getElementById("signup-password-warn");
+	let againPasswordWarn = document.getElementById("again-password-warn");
+
+	signupNameWarn.innerHTML = `&nbsp;`;
+	signupEmailWarn.innerHTML = `&nbsp;`;
+	signupPasswordWarn.innerHTML = `&nbsp;`;
+	againPasswordWarn.innerHTML = `&nbsp;`;
+
+	if (signupName == "") {
+		signupNameWarn.innerHTML = "فیلد نمی تواند خالی باشد";
+	}
+	if (signupEmail == "") {
+		signupEmailWarn.innerHTML = "فیلد نمی تواند خالی باشد";
+	}
+	if (signupPassword == "") {
+		signupPasswordWarn.innerHTML = "فیلد نمی تواند خالی باشد";
+	}
+	if (againPassword == "") {
+		againPasswordWarn.innerHTML = "فیلد نمی تواند خالی باشد";
+	}
+	if (signupName == "" || signupEmail == "" || signupPassword == "" || againPassword == "") {
+		return
+	}
+
+	if (signupPassword != againPassword) {
+		againPasswordWarn.innerHTML = "مطابقت ندارد";
+		return
+	}
+
 	let data = {
 		action: 'signup',
 		username: document.getElementById('signup-name').value,
