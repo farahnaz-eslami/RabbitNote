@@ -22,12 +22,16 @@
 	display: block;
 }
 
+#loged-in-container .btn-dark {
+	margin-bottom: 30px;
+}
+
 /* Login and Signup */
 #login-container {
 	width: 450px;
 	margin: 50px auto;
 	position: relative;
-	height: 55vh;
+	height: 400px;
 	max-width: 90%;
 	min-height: 370px;
 	display: none;
@@ -60,7 +64,7 @@
 	background-color: #cbf3f0;
 	width: 10%;
 	overflow: hidden;
-	transition-property: width;
+	transition-property: all;
 	transition-duration: 1.5s;
 }
 
@@ -76,9 +80,15 @@
 	outline: none;
 	display: block;
 	padding: 8px 10px;
-	margin: 10px 14px;
+	margin: 10px 14px 5px 14px;
 	width: 80%;
 	border-radius: 8px;
+}
+
+.form .input-area p {
+	width: 80%;
+	font-size: 0.8rem;
+	color: var(--red-color);
 }
 
 .form .btn-light {
@@ -86,6 +96,21 @@
 	margin: 10px 14px;
 	margin-top: 20px;
 	font-size: 20px;
+}
+
+.error {
+	background-color: var(--errorbox-color);
+	color: var(--errortext-color);
+	font-size: 1.3rem;
+	text-align: center;
+	height: 0;
+	overflow: hidden;
+	transition: all 0.75s;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	margin-top: 10px;
+	border-radius: 15px;
 }
 
 #cover {

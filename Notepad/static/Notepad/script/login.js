@@ -1,7 +1,7 @@
 var flag = 0
 function coverit() {
     if (flag == 0) {
-		document.getElementById("login-container").style.height = "70vh";
+		document.getElementById("login-container").style.height = "550px";
         document.getElementById("signup-form").style.width = "90%";
         function create_timeout() {
             document.getElementById("cover").style.display = "none";
@@ -12,13 +12,27 @@ function coverit() {
         flag = 1
     }
     else {
-		document.getElementById("login-container").style.height = "55vh";
+		document.getElementById("login-container").style.height = "400px";
         document.getElementById("signup-form").style.width = "10%";
         document.getElementById("cover").style.display = "block";
         document.getElementById("cover").style.opacity = "1";
         document.getElementById("change-btn").innerHTML = "ایجاد حساب جدید";
         flag = 0
     }  
+}
+
+function showError () {
+	var error = document.getElementsByClassName("error");
+	for (var i = 0; i < error.length; i ++) {
+		error[i].style.height = "40px";
+	}
+}
+
+function unshowError () {
+	var error = document.getElementsByClassName("error");
+	for (var i = 0; i < error.length; i ++) {
+		error[i].style.height = "0";
+	}
 }
 
 const request = new Request (
@@ -58,6 +72,30 @@ function login() {
 }
 
 function login() {
+	let loginName = document.getElementById("login-name").value;
+	let loginPassword = document.getElementById("login-password").value;
+	let loginNameWarn = document.getElementById("login-name-warn");
+	let loginPasswordWarn = document.getElementById("login-password-warn");
+
+	loginNameWarn.innerHTML = `&nbsp;`;
+	loginPasswordWarn.innerHTML = `&nbsp`;
+
+	unshowError()
+
+	if (loginName == "" && loginPassword == "") {
+		loginNameWarn.innerHTML = "نام کاربری باید وارد شود";
+		loginPasswordWarn.innerHTML = "رمز عبور باید وارد شود";
+		return
+	}
+	else if (loginName == "") {
+		loginNameWarn.innerHTML = "نام کاربری باید وارد شود";
+		return
+	}
+	else if (loginPassword == "") {
+		loginPasswordWarn.innerHTML = "رمز عبور باید وارد شود";
+		return
+	}
+
 	let data = {
 		action: 'login',
 		username: document.getElementById('login-name').value,
@@ -70,7 +108,7 @@ function login() {
 	})
 	.then(function(response){
 		if (response.status != 200){
-			console.log("Hah, Error?")
+			showError()
 		}
 		else {
 			response.json().then(data => {
@@ -79,15 +117,17 @@ function login() {
 					window.location.replace(my_url);
 				}
 				else {
-					alert("False :(")
+					showError()
 				}
 			});
 		}
 	})
-	.catch(error => console.log("Hah", error));
+	.catch(error => showError());
 }
 
 function logout() {
+	unshowError()
+
 	let data = {
 		action: 'logout',
 	}
@@ -98,7 +138,7 @@ function logout() {
 	})
 	.then(function(response){
 		if (response.status != 200){
-			alert("Hah, Error?")
+			showError()
 		}
 		else {
 			response.json().then(data => {
@@ -107,15 +147,52 @@ function logout() {
 					document.getElementById("login-container").style.display = "block";
 				}
 				else {
-					alert("False :(")
+					showError()
 				}
 			});
 		}
 	})
-	.catch(error => console.log("Hah", error));
+	.catch(error => showError());
 }
 
 function sign_up() {
+	let signupName = document.getElementById("signup-name").value;
+	let signupEmail = document.getElementById("signup-email").value;
+	let signupPassword = document.getElementById("signup-password").value;
+	let againPassword = document.getElementById("again-password").value;
+	let signupNameWarn = document.getElementById("signup-name-warn");
+	let signupEmailWarn = document.getElementById("signup-email-warn");
+	let signupPasswordWarn = document.getElementById("signup-password-warn");
+	let againPasswordWarn = document.getElementById("again-password-warn");
+
+	signupNameWarn.innerHTML = `&nbsp;`;
+	signupEmailWarn.innerHTML = `&nbsp;`;
+	signupPasswordWarn.innerHTML = `&nbsp;`;
+	againPasswordWarn.innerHTML = `&nbsp;`;
+
+	unshowError()
+
+	if (signupName == "") {
+		signupNameWarn.innerHTML = "فیلد نمی تواند خالی باشد";
+	}
+	if (signupEmail == "") {
+		signupEmailWarn.innerHTML = "فیلد نمی تواند خالی باشد";
+	}
+	if (signupPassword == "") {
+		signupPasswordWarn.innerHTML = "فیلد نمی تواند خالی باشد";
+	}
+	if (againPassword == "") {
+		againPasswordWarn.innerHTML = "فیلد نمی تواند خالی باشد";
+	}
+	if (signupName == "" || signupEmail == "" || signupPassword == "" || againPassword == "") {
+		return
+	}
+
+	if (signupPassword != againPassword) {
+		againPasswordWarn.innerHTML = "مطابقت ندارد";
+		return
+	}
+
 	let data = {
 		action: 'signup',
 		username: document.getElementById('signup-name').value,
@@ -133,7 +210,7 @@ function sign_up() {
 	})
 	.then(function(response){
 		if (response.status != 200){
-			alert("Hah, Error?")
+			showError()
 		}
 		else {
 			response.json().then(data => {
@@ -142,10 +219,10 @@ function sign_up() {
 					window.location.replace(my_url);
 				}
 				else {
-					alert("False :(", response)
+					showError()
 				}
 			});
 		}
 	})
-	.catch(error => console.log("Hah", error));
+	.catch(error => showError());
 }

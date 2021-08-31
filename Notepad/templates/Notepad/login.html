@@ -15,29 +15,51 @@ Login | RabbitNote
     <p>شما با نام کاربری <span>{{username}}</span> وارد شده اید.</p>
     <a class="btn-light" href="{% url 'home' %}">صفحه اصلی</a>
     <button id="log-out-btn" class="btn-dark" onclick="logout();">خروج از حساب</button>
+    <div class="error">مشکلی وجود دارد</div>
 </div>
 
 <div id="login-container">
     <form id="login-form" class="form">
         <label for="login-name"> نام کاربری <i class="fas fa-user"></i> </label>
-        <input type="text" id="login-name" class="field">
+        <div class="input-area">
+            <input type="text" id="login-name" class="field">
+            <p id='login-name-warn'>&nbsp;</p>
+        </div>
+        
         <label for="login-password">رمز عبور <i class="fas fa-key"></i> </label>
-        <input type="password" id="login-password" class="field">
+        <div class="input-area">
+            <input type="password" id="login-password" class="field">
+            <p id="login-password-warn">&nbsp;</p>
+        </div>
         <button class="btn-light" type="button" onclick="login();">ورود <i class="fas fa-door-open"></i></button>
     </form>
 
     <form id="signup-form" class="form">
         <label for="signup-name">نام کاربری <i class="fas fa-user"></i></label>
-        <input type="text" id="signup-name" class="field">
+        <div class=input-area>
+            <input type="text" id="signup-name" class="field">
+            <p id="signup-name-warn">&nbsp;</p>
+        </div>
 		<label for="signup-email">پست الکترونیک <i class="fas fa-envelope"></i></label>
-        <input type="email" id="signup-email" class="field">
+        <div class="input-area">
+            <input type="email" id="signup-email" class="field">
+            <p id="signup-email-warn">&nbsp;</p>
+        </div>
         <label for="signup-password">رمز عبور <i class="fas fa-key"></i></label>
-        <input type="password" id="signup-password" class="field">
+        <div class="input-area">
+            <input type="password" id="signup-password" class="field">
+            <p id="signup-password-warn">&nbsp;</p>
+        </div>
         <label for="again-password">مجددا رمز عبور را وارد کنید <i class="fas fa-key"></i></label>
-        <input type="password" id="again-password" class="field">
+        <div class="input-area">
+            <input type="password" id="again-password" class="field">
+            <p id="again-password-warn">&nbsp;</p>
+        </div>
         <button class="btn-light" type="button" onclick="sign_up();">ثبت نام <i class="fas fa-user-plus"></i></button>
         <div id="cover"></div>
     </form>
+
+    <div class="error" id="error">مشکلی وجود دارد</div>
 
     <button class="btn-dark" id="change-btn" onclick="coverit()">ایجاد حساب جدید</button>
 </div>
