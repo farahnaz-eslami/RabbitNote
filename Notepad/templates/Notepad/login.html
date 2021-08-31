@@ -15,6 +15,7 @@ Login | RabbitNote
     <p>شما با نام کاربری <span>{{username}}</span> وارد شده اید.</p>
     <a class="btn-light" href="{% url 'home' %}">صفحه اصلی</a>
     <button id="log-out-btn" class="btn-dark" onclick="logout();">خروج از حساب</button>
+    <div class="error">مشکلی وجود دارد</div>
 </div>
 
 <div id="login-container">
@@ -57,6 +58,8 @@ Login | RabbitNote
         <button class="btn-light" type="button" onclick="sign_up();">ثبت نام <i class="fas fa-user-plus"></i></button>
         <div id="cover"></div>
     </form>
+
+    <div class="error" id="error">مشکلی وجود دارد</div>
 
     <button class="btn-dark" id="change-btn" onclick="coverit()">ایجاد حساب جدید</button>
 </div>
