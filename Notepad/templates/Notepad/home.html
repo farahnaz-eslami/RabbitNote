@@ -20,14 +20,19 @@ Home | RabbitNote
     </header>
 
     <div class="home-content">
-        <div class="notes-list">
+        <div class="notebookes-list list">
+            <div>نوتبوک ها</div>
+            <div class="plus">
+                <button id="add-notebook" onclick="addNotebook()"><i class="fas fa-plus fa-2x"></i></button></i>
+            </div>
+            <ul id="ul-of-notebooks"></ul>
+        </div>
+        <div class="notes-list list" id="notes-id">
             <div>نوت ها</div>
-            <div class="plus"><button><i class="fas fa-plus fa-2x"></i></button></i></div>
-            <ul>
-                <li><button>note 3</button></li>
-                <li><button>note 2</button></li>
-                <li><button>note 1</button></li>
-            </ul>
+            <div class="plus">
+                <button id="add-note" onclick="addNote()"><i class="fas fa-plus fa-2x"></i></button></i>
+            </div>
+            <ul id="ul-of-notes"></ul>
         </div>
     </div>
 
@@ -48,4 +53,6 @@ Home | RabbitNote
 <script>
     csrf = "{{csrf_token}}"
 </script>
+
+<script src="{% static 'Notepad/script/home.js' %}"></script>
 {% endblock script %}

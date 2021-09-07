@@ -199,6 +199,7 @@ function sign_up() {
 		password: document.getElementById('signup-password').value,
 		email: document.getElementById('signup-email').value,
 	}
+
 	if (data['password'] != document.getElementById('again-password').value){
 		alert("use same passwords");
 		return 0;
@@ -225,4 +226,30 @@ function sign_up() {
 		}
 	})
 	.catch(error => showError());
+}
+
+function checkName () {
+	let signupNameInput = document.getElementById("signup-name");
+	signupNameInput.style.background = "#fff";
+
+	let data = {
+		action: "username_exists",
+		username: signupNameInput.value,
+	};
+	fetch(request, {
+		method: "POST",
+		mode: "same-origin",
+		body: JSON.stringify(data)
+	})
+	.then(function(response) {
+		response.json().then(data => {
+			if (data["res"] == "True") {
+				signupNameInput.style.background = "#af8";
+			}
+			else {
+				console.log("not true");
+			}
+		});
+	})
+	.catch(error => console.log("Error"));
 }
