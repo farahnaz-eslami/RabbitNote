@@ -16,16 +16,17 @@
     display: flex;
 }
 
-#home-container .home-content .notes-list {
+#home-container .home-content .list {
     width: 15%;
     height: 100%;
     background-color: var(--dark-gray);
     overflow: auto;
     color: #fff;
     text-align: center;
+    border-right: 1px solid #ccc;
 }
 
-#home-container .home-content .notes-list div {
+#home-container .home-content .list div {
     border-bottom: 1px solid #ccc;
     padding: 10px 0;
     font-size: 1.2rem;
@@ -49,16 +50,34 @@
     transition: all 0.75s;
 }
 
-#home-container .plus button:hover i {
+#home-container .list .plus button:hover i {
     transform: rotate(90deg);
     color: var(--green-color);
 }
 
-#home-container .notes-list li {
+#home-container .list li {
     border-bottom: 1px solid #ccc;
 }
 
-#home-container .notes-list li button {
+.list li .delete-item {
+    background-color: var(--red-color);
+    margin: 5px;
+    border: none;
+    border-radius: 4px;
+    visibility: hidden;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 30px;
+    height: 80%;
+    margin-bottom: 0;
+}
+
+.list li .delete-item:hover {
+    opacity: 0.8;
+}
+
+#home-container .list li button {
     width: 100%;
     height: 100%;
     padding: 10px;
@@ -67,14 +86,23 @@
     color: #fff;
     transition: all 1s;
     font-size: 1.2rem;
-    border-radius: 8px;
     cursor: pointer;
+    position: relative;
 }
 
-#home-container .notes-list li button:hover {
+#home-container .list li button:hover {
     background-color: var(--secondary-color);
     color: var(--dark-gray);
-    transform: scaleY(1.3);
+}
+
+#home-container .list li button:hover .delete-item {
+    visibility: visible;
+}
+
+#notes-id {
+    transform: translateX(-100%);
+    transition: all 1s;
+    z-index: -1;
 }
 
 #home-container footer {
