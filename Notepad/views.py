@@ -23,7 +23,7 @@ def home_view(request):
             result = {}
             for notepad in q:
                 result[notepad.pk] = notepad.name
-            return JsonResponse(result)
+            return JsonResponse({"notebooks": result, "res": "True"})
             
         elif action == 'add-notebook':
             if 'name' in data:
@@ -59,7 +59,7 @@ def home_view(request):
                         result[page.pk] = {'title': page.title, 
                                            'created': page.date_created,
                                            'modified': page.date_modified}
-                    return JsonResponse(result)
+                    return JsonResponse({"pages": result, "res": "True"})
 
         elif action == 'add-page':
             if 'pk' in data and 'name' in data:
@@ -97,8 +97,7 @@ def home_view(request):
     else:
         return render(request, "Notepad/home.html",
                       {'username': request.user.username})
-        
-    
+
 
 def login_view(request):
     if request.is_ajax and request.method == "POST":
