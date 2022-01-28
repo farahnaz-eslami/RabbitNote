@@ -1,3 +1,62 @@
+const request = new Request(
+	window.location.href,
+	{headers: {
+		'X-CSRFToken': csrf
+	}}
+);
+
+function addNewNotebook() {
+    let data = {
+        action:"add-notebook",
+        name:"this is a new notebook"
+    };
+    fetch(request, {
+        method: "POST",
+        mode: "same-origin",
+        body: JSON.stringify(data)
+    })
+    .then(function(response) {
+        response.json().then(data => {
+            if (data["res"] == "True") {
+                console.log("Done!")
+            }
+        })
+    })
+}
+
+addNewNotebook();
+
+function fillNotebookList () {
+    let data = {
+        action: "get-notebooks",
+    };
+    fetch(request, {
+        method: "POST",
+        mode: "same-origin",
+        body: JSON.stringify(data),
+    })
+    .then(function(response) {
+        response.json().then(data => {
+            if (data["res"] == "True") {
+                for (i in notebookes) {
+                    console.log(i);
+                }
+            }
+        })
+    })
+    .catch(error => console.log("Error"));
+}
+
+fillNotebookList();
+
+
+
+
+
+
+
+
+
 var allNotes = {
     f: ["hi", "im", "working"]
 }

@@ -20,6 +20,7 @@ Home | RabbitNote
     </header>
 
     <div class="home-content">
+        <div id="cover-text"><div>یک نوت انتخاب کن</div></div>
         <div class="notebookes-list list">
             <div>نوتبوک ها</div>
             <div class="plus">
@@ -33,6 +34,9 @@ Home | RabbitNote
                 <button id="add-note" onclick="addNote()"><i class="fas fa-plus fa-2x"></i></button></i>
             </div>
             <ul id="ul-of-notes"></ul>
+        </div>
+        <div id="text-container">
+            <textarea name="text" id="text"></textarea>
         </div>
     </div>
 
@@ -51,7 +55,7 @@ Home | RabbitNote
 
 {% block script %}
 <script>
-    csrf = "{{csrf_token}}"
+    var csrf = "{{csrf_token}}";
 </script>
 
 <script src="{% static 'Notepad/script/home.js' %}"></script>
