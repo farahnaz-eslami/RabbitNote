@@ -16,6 +16,32 @@
     display: flex;
 }
 
+#cover-text {
+    background-image: url("images/pattern.jpg");
+    width: 100%;
+    height: 80%;
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: -1;
+}
+
+#cover-text:after {
+    content: "";
+    width: 100%;
+    height: 100%;
+    background-color: #000;
+    position: absolute;
+    opacity: 0.9;
+}
+
+#cover-text div {
+    font-size: 3rem;
+    color: #fff !important;
+    z-index: 2;
+}
+
 #home-container .home-content .list {
     width: 15%;
     height: 100%;
@@ -103,6 +129,24 @@
     transform: translateX(-100%);
     transition: all 1s;
     z-index: -1;
+}
+
+/* Text Container */
+#text-container {
+    width: 100%;
+    height: 80vh;
+    position: relative;
+}
+
+#text {
+    width: 100%;
+    height: 100%;
+    direction: rtl;
+    font-size: 1.3rem;
+    line-height: 40px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #eee;
+    visibility: hidden;
 }
 
 #home-container footer {
