@@ -9,10 +9,18 @@ from json import loads
 # Create your views here.
 
 
+def is_ajax(request):
+    """
+    From django 3.1 the request.is_ajax has been deprecated, so I wrote this to check if
+    a reqeust is ajax or not
+    """
+    return request.META.get('HTTP_X_REQUESTED_WITH') == 'XMLHttpRequest'
+
+
 def home_view(request):
     if not request.user.is_authenticated:
         return redirect(reverse('login'))
-    elif request.is_ajax and request.method == "POST" and request.user.is_authenticated:
+    elif is_ajax(request) and request.method == "POST" and request.user.is_authenticated:
         data = loads(request.body)
         if 'action' not in data:
             raise Http404('Bad request!')
@@ -100,7 +108,7 @@ def home_view(request):
 
 
 def login_view(request):
-    if request.is_ajax and request.method == "POST":
+    if request.method == "POST" and is_ajax(request):
         data = loads(request.body)
         if "action" in data and data["action"] == "login":
             if 'username' in data and 'password' in data:
