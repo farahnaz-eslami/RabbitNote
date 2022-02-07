@@ -17,14 +17,15 @@ function addNewNotebook() {
     })
     .then(function(response) {
         response.json().then(data => {
+            // noinspection EqualityComparisonWithCoercionJS
             if (data["res"] == "True") {
-                console.log("Done!")
+                console.log("Done!");
             }
         })
     })
 }
 
-addNewNotebook();
+// addNewNotebook();
 
 function fillNotebookList () {
     let data = {
@@ -35,16 +36,18 @@ function fillNotebookList () {
         mode: "same-origin",
         body: JSON.stringify(data),
     })
-    .then(function(response) {
-        response.json().then(data => {
-            if (data["res"] == "True") {
-                for (i in notebookes) {
-                    console.log(i);
+        .then(function (response) {
+            response.json().then(data => {
+                if (data["res"] == "True") {
+                    console.log("hamoone")
+                    console.log(data["notebooks"])
+                    for (i in data["notebooks"]) {
+                        console.log(i);
+                    }
                 }
-            }
+            })
         })
-    })
-    .catch(error => console.log("Error"));
+        .catch(error => console.log("Error"));
 }
 
 fillNotebookList();
